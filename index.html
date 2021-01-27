@@ -1,0 +1,33 @@
+<! DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href='http://solod.webhostapp.com/style.css' rel='stylesheet'
+          type='text/css'>
+    <script>
+        function changeImg(){
+            document.getElementById('pic1').src =
+                'http://localhost:4200/otherimg';
+        }
+        function getContent(){
+            xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:4200/content');
+            xhr.onload = xhr.onerror = function() {
+                if (this.status == 200) {
+                    console.log(this.response);
+                } else {
+                    console.log("error " + this.status);
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<p><img src='https://romka.eu/files/csp_shield_logo_0.jpg' alt='CSP'></p>
+<p><img id='pic1' src='http://localhost:4200/img' alt='photo'></p>
+<input type='button' value='change img'
+       onclick='changeImg()'><br>
+<input type='button' value='get content' onclick='getContent()'>
+</body>
+</html>
